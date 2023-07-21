@@ -48,7 +48,7 @@ namespace Infrastructure.Repository.Repositories
                     return true;
                 }
             }
-            catch (Exception erro)
+            catch (Exception)
             {
                 return false;
             }

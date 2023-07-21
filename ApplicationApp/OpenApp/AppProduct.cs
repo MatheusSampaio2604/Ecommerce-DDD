@@ -70,9 +70,9 @@ namespace ApplicationApp.OpenApp
             await _IProduct.Update(Objeto);
         }
 
-        public async Task<List<Produto>> ListarProdutosComEstoque()
+        public async Task<List<Produto>> ListarProdutosComEstoque(string descricao)
         {
-            return await _IServiceProduct.ListarProdutosComEstoque();
+            return await _IServiceProduct.ListarProdutosComEstoque(descricao);
         }
 
 

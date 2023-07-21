@@ -15,21 +15,22 @@ namespace Web_ECommerce.Models
     public class HelpQrCode : Controller
     {
 
-        private async Task<byte[]> GeraQrCode(string dadosBanco)
+        private async Task<byte[]> GenerateQrCodeAsync(string dadosBanco)
         {
+            
             QRCodeGenerator qrCodeGenerator = new QRCodeGenerator();
-
             QRCodeData qrCodeData = qrCodeGenerator.CreateQrCode(dadosBanco, QRCodeGenerator.ECCLevel.H);
-
             QRCode qrCode = new QRCode(qrCodeData);
 
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
 
+            await Task.Delay(100);
+
             var bitmapBytes = BitmapToBytes(qrCodeImage);
 
             return bitmapBytes;
-
         }
+
 
         private static byte[] BitmapToBytes(Bitmap img)
         {
@@ -114,7 +115,7 @@ namespace Web_ECommerce.Models
 
                 try
                 {
-                    var img = await GeraQrCode("Dados do banco aqui");
+                    var img = await GenerateQrCodeAsync("Dados do banco aqui");
 
                     Stream streamImage = new MemoryStream(img);
 
@@ -123,7 +124,7 @@ namespace Web_ECommerce.Models
                     alturaTituloDetalhesY += 40;
                     graphics.DrawImage(qrCode, 140, alturaTituloDetalhesY, 310, 310);
                 }
-                catch (Exception erro)
+                catch (Exception)
                 {
 
                 }

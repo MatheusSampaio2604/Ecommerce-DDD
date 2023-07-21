@@ -51,7 +51,7 @@ namespace Web_ECommerce.Controllers
         }
 
         // GET: ProdutosController/Create
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -160,9 +160,9 @@ namespace Web_ECommerce.Controllers
 
         [AllowAnonymous]
         [HttpGet("/api/ListarProdutosComEstoque")]
-        public async Task<JsonResult> ListarProdutosComEstoque()
+        public async Task<JsonResult> ListarProdutosComEstoque(string descricao)
         {
-            return Json(await _InterfaceProductApp.ListarProdutosComEstoque());
+            return Json(await _InterfaceProductApp.ListarProdutosComEstoque(descricao));
         }
 
         public async Task<IActionResult> ListarProdutosCarrinhoUsuario()
@@ -210,26 +210,26 @@ namespace Web_ECommerce.Controllers
                 if (produtoTela.Imagem != null)
                 {
                     var webRoot = _environment.WebRootPath;
-                    var permissionSet = new PermissionSet(PermissionState.Unrestricted);
-                    var writePermission = new FileIOPermission(FileIOPermissionAccess.Append, string.Concat(webRoot, "/imgProdutos"));
-                    permissionSet.AddPermission(writePermission);
 
-                    var Extension = System.IO.Path.GetExtension(produtoTela.Imagem.FileName);
+                    var extension = System.IO.Path.GetExtension(produtoTela.Imagem.FileName);
+                    var nomeArquivo = string.Concat(produto.Id.ToString(), extension);
+                    var diretorioArquivoSalvar = System.IO.Path.Combine(webRoot, "imgProdutos", nomeArquivo);
 
-                    var NomeArquivo = string.Concat(produto.Id.ToString(), Extension);
+                    using (var stream = new FileStream(diretorioArquivoSalvar, FileMode.Create))
+                    {
+                        await produtoTela.Imagem.CopyToAsync(stream);
+                    }
 
-                    var diretorioArquivoSalvar = string.Concat(webRoot, "\\imgProdutos\\", NomeArquivo);
-
-                    produtoTela.Imagem.CopyTo(new FileStream(diretorioArquivoSalvar, FileMode.Create));
-
-                    produto.Url = string.Concat("https://localhost:5001", "/imgProdutos/", NomeArquivo);
+                    produto.Url = $"https://localhost:5001/imgProdutos/{nomeArquivo}";
 
                     await _InterfaceProductApp.UpdateProduct(produto);
                 }
             }
-            catch (Exception erro)
+            catch (Exception)
             {
+                // Lide com a exceção de alguma forma apropriada
             }
+
 
         }
 
