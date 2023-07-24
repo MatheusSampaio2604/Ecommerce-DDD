@@ -15,8 +15,8 @@ namespace Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Entities.Entities.ApplicationUser", b =>
@@ -28,48 +28,48 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CEP")
-                        .HasColumnName("USR_CEP")
+                        .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
+                        .HasColumnName("USR_CEP");
 
                     b.Property<string>("CPF")
-                        .HasColumnName("USR_CPF")
+                        .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnName("USR_CPF");
 
                     b.Property<string>("Celular")
-                        .HasColumnName("USR_CELULAR")
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnName("USR_CELULAR");
 
                     b.Property<string>("ComplementoEndereco")
-                        .HasColumnName("USR_COMPLEMENTO_ENDERECO")
+                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)")
-                        .HasMaxLength(450);
+                        .HasColumnName("USR_COMPLEMENTO_ENDERECO");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<string>("Endereco")
-                        .HasColumnName("USR_ENDERECO")
+                        .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasColumnName("USR_ENDERECO");
 
                     b.Property<bool>("Estado")
-                        .HasColumnName("USR_ESTADO")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasColumnName("USR_ESTADO");
 
                     b.Property<int>("Idade")
-                        .HasColumnName("USR_IDADE")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("USR_IDADE");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -78,17 +78,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Nome")
-                        .HasColumnName("USR_NOME")
+                        .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasColumnName("USR_NOME");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -103,29 +103,29 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefone")
-                        .HasColumnName("USR_TELEFONE")
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnName("USR_TELEFONE");
 
                     b.Property<int?>("Tipo")
-                        .HasColumnName("USR_TIPO")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("USR_TIPO");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
+                        .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
@@ -135,13 +135,13 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("CUS_ID")
                         .HasColumnType("int")
+                        .HasColumnName("CUS_ID")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Estado")
-                        .HasColumnName("CUS_ESTADO")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CUS_ESTADO");
 
                     b.Property<int>("IdProduto")
                         .HasColumnType("int");
@@ -150,8 +150,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("QtdCompra")
-                        .HasColumnName("CSU_QTD")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CSU_QTD");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -169,51 +169,51 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("PRD_ID")
                         .HasColumnType("int")
+                        .HasColumnName("PRD_ID")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DataAlteracao")
-                        .HasColumnName("PRD_DATA_ALTERACAO")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("PRD_DATA_ALTERACAO");
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnName("PRD_DATA_CADASTRO")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("PRD_DATA_CADASTRO");
 
                     b.Property<string>("Descricao")
-                        .HasColumnName("PRD_DESCRICAO")
+                        .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasColumnName("PRD_DESCRICAO");
 
                     b.Property<bool>("Estado")
-                        .HasColumnName("PRD_ESTADO")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasColumnName("PRD_ESTADO");
 
                     b.Property<string>("Nome")
-                        .HasColumnName("PRD_NOME")
+                        .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasColumnName("PRD_NOME");
 
                     b.Property<string>("Observacao")
-                        .HasColumnName("PRD_OBSERVACAO")
+                        .HasMaxLength(20000)
                         .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(20000);
+                        .HasColumnName("PRD_OBSERVACAO");
 
                     b.Property<int>("QtdEstoque")
-                        .HasColumnName("PRD_QTD_ESTOQUE")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("PRD_QTD_ESTOQUE");
 
                     b.Property<string>("Url")
-                        .HasColumnName("PRD_URL")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("PRD_URL");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnName("PRD_VALO")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("PRD_VALO");
 
                     b.HasKey("Id");
 
@@ -232,18 +232,18 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
+                        .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
@@ -300,12 +300,12 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -342,12 +342,12 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -366,6 +366,10 @@ namespace Infrastructure.Migrations
                     b.HasOne("Entities.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Produto");
                 });
 
             modelBuilder.Entity("Entities.Entities.Produto", b =>
@@ -373,6 +377,8 @@ namespace Infrastructure.Migrations
                     b.HasOne("Entities.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

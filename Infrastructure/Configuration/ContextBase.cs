@@ -38,7 +38,7 @@ namespace Infrastructure.Configuration
 
         private string GetStringConectionConfig()
         {
-            string strCon = "Data Source=DESKTOP-HVNTI80\\DESENVOLVIMENTO;Initial Catalog=DDD_ECOMMERCE;Integrated Security=False;User ID=sa;Password=1234;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+            string strCon = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=EcommerceDDD;Integrated Security=True";
             return strCon;
         }
 
