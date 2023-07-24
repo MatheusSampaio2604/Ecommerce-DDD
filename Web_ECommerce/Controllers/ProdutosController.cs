@@ -162,7 +162,9 @@ namespace Web_ECommerce.Controllers
         [HttpGet("/api/ListarProdutosComEstoque")]
         public async Task<JsonResult> ListarProdutosComEstoque(string descricao)
         {
-            return Json(await _InterfaceProductApp.ListarProdutosComEstoque(descricao));
+            var item = await _InterfaceProductApp.ListarProdutosComEstoque(descricao);
+            
+            return Json(item);
         }
 
         public async Task<IActionResult> ListarProdutosCarrinhoUsuario()

@@ -55,24 +55,25 @@ ObjetoVenda.CarregaProdutos = function (descricao) {
                 var idNome = "nome_" + Entitie.id;
                 var idQtd = "qtd_" + Entitie.id;
 
-                htmlConteudo += "</br><label id='" + idNome + "' > Produto: " + Entitie.nome + "</label></br>";
-          
                 if (Entitie.url != null && Entitie.url != "" && Entitie.url != undefined) {
 
-                    htmlConteudo += "<img width='200' height='100' src='" + Entitie.url + "'/></br>";
+                    htmlConteudo += "<img width='200' height='200' src='" + Entitie.url + "'/></br>";
                 }
 
-                htmlConteudo += "<label>  Valor: " + Entitie.valor + "</label></br>";
+                htmlConteudo += "<label> R$ " + Entitie.valor + "</label></br>";
 
-                htmlConteudo += "Quantidade : <input type'number' value='1' id='" + idQtd + "'>";
+                htmlConteudo += "<label id='" + idNome + "' > " + Entitie.nome + "</label></br>";
+
+            /*    htmlConteudo += "Quantidade: <input class='col-sm-3' type='number' value='1' id='" + idQtd + "'/><br>";*/
 
                 htmlConteudo += "<input type='button' onclick='ObjetoVenda.AdicionarCarrinho(" + Entitie.id + ")' value ='Comprar'> </br> ";
 
                 htmlConteudo += " </div>";
 
             });
-
+    
             $("#DivVenda").html(htmlConteudo);
+
         }
     });
 

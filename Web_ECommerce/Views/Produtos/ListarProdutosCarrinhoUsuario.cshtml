@@ -37,40 +37,35 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-
-                <td>
-                    @{
-                        if (!string.IsNullOrWhiteSpace(item.Url))
-                        {
-                            <img width="80" height="80" src=@item.Url />
-                        }
+        <tr>
+            <td>
+                @{
+                    if (!string.IsNullOrWhiteSpace(item.Url))
+                    {
+                        <img width="80" height="80" src=@item.Url />
                     }
-                </td>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdCompra)
+            </td>
+            <td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Observacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Valor)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.QtdCompra)
-                </td>
-
-                <td>
-
-                    @Html.ActionLink("Remover", "RemoverCarrinho", new { id = item.IdProdutoCarrinho })
-                </td>
-            </tr>
+                @Html.ActionLink("Remover", "RemoverCarrinho", new { id = item.IdProdutoCarrinho })
+            </td>
+        </tr>
         }
     </tbody>
 </table>
