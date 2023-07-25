@@ -57,7 +57,7 @@ ObjetoVenda.CarregaProdutos = function (descricao) {
 
                 if (Entitie.url != null && Entitie.url != "" && Entitie.url != undefined) {
 
-                    htmlConteudo += "<img width='200' height='200' src='" + Entitie.url + "'/></br>";
+                    htmlConteudo += "<img width='200' height='200' alt='imagem do produto' src='" + Entitie.url + "'/></br>";
                 }
 
                 htmlConteudo += "<label> R$ " + Entitie.valor + "</label></br>";
