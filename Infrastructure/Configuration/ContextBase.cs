@@ -36,10 +36,9 @@ namespace Infrastructure.Configuration
         }
 
 
-        private string GetStringConectionConfig()
+        private static string GetStringConectionConfig()
         {
-            string strCon = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=EcommerceDDD;Integrated Security=True";
-            return strCon;
+            return "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=EcommerceDDD;Integrated Security=True";
         }
 
 

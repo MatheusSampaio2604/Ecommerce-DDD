@@ -43,8 +43,8 @@ namespace Entities.Entities
         [ForeignKey("ApplicationUser")]
         [Column(Order = 1)]
         public string UserId { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
 
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Column("PRD_ESTADO")]
         [Display(Name = "Estado")]
