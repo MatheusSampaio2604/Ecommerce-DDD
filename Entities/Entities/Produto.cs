@@ -69,5 +69,8 @@ namespace Entities.Entities
 
         [Column("PRD_URL")]
         public string Url { get; set; }
+
+        [NotMapped]
+        public DateTime? DataCompra { get; set; }
     }
 }

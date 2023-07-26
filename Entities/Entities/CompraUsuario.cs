@@ -53,6 +53,10 @@ namespace Entities.Entities
         [NotMapped]
         public List<Produto> ListaProdutos { get; set; }
 
-
+        [Display(Name = "Compra")]
+        [ForeignKey("TB_COMPRA")]
+        [Column(Order = 1)]
+        public int IdCompra { get; set; }
+        public virtual Compra Compra { get; set; }
     }
 }

@@ -20,15 +20,14 @@ namespace ApplicationApp.OpenApp
             _IServiceCompraUsuario = IServiceCompraUsuario;
         }
 
-
         public async Task<CompraUsuario> CarrinhoCompras(string userId)
         {
             return await _IServiceCompraUsuario.CarrinhoCompras(userId);
         }
 
-        public async Task<CompraUsuario> ProdutosComprados(string userId)
+        public async Task<CompraUsuario> ProdutosComprados(string userId, int? idCompra = null)
         {
-            return await _IServiceCompraUsuario.ProdutosComprados(userId);
+            return await _IServiceCompraUsuario.ProdutosComprados(userId, idCompra);
         }
 
         public async Task<bool> ConfirmaCompraCarrinhoUsuario(string userId)
@@ -36,14 +35,10 @@ namespace ApplicationApp.OpenApp
             return await _ICompraUsuario.ConfirmaCompraCarrinhoUsuario(userId);
         }
 
-
-
-
         public async Task<int> QuantidadeProdutoCarrinhoUsuario(string userId)
         {
             return await _ICompraUsuario.QuantidadeProdutoCarrinhoUsuario(userId);
         }
-
 
         public async Task Add(CompraUsuario Objeto)
         {
@@ -65,13 +60,19 @@ namespace ApplicationApp.OpenApp
             return await _ICompraUsuario.List();
         }
 
-
-
         public async Task Update(CompraUsuario Objeto)
         {
             await _ICompraUsuario.Update(Objeto);
         }
 
+        public async Task<List<CompraUsuario>> MinhasCompras(string userId)
+        {
+            return await _IServiceCompraUsuario.MinhasCompras(userId);
+        }
 
+        public async Task AdicionaProdutoCarrinho(string userId, CompraUsuario compraUsuario)
+        {
+            await _IServiceCompraUsuario.AdicionaProdutoCarrinho(userId, compraUsuario);
+        }
     }
 }
