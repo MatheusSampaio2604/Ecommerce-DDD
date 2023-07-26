@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Entities", "5 - Entitie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{6D196355-F49A-4217-B505-4EA51B74C18B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infrastructure\Infra.csproj", "{BBBE57BF-196B-4B61-AE15-48073B8DD1DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{BBBE57BF-196B-4B61-AE15-48073B8DD1DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{2C930362-19BD-4B4C-A6C7-6EAED4C02576}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "ApplicationApp\Application.csproj", "{05D295E5-1F86-4D8F-96C2-F8C78BEA1A7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{05D295E5-1F86-4D8F-96C2-F8C78BEA1A7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "Web_ECommerce\UI.csproj", "{0AF8E897-E98D-45F6-92BC-19D379F39707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "Presentation\UI.csproj", "{0AF8E897-E98D-45F6-92BC-19D379F39707}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Test", "6 - Test", "{294FA27D-4588-4983-A453-988EF57B6131}"
 EndProject
