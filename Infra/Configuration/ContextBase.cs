@@ -18,6 +18,7 @@ namespace Infrastructure.Configuration
         public DbSet<CompraUsuario> CompraUsuario { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Compra> Compra { get; set; }
+        public DbSet<LogSistema> LogSistema { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

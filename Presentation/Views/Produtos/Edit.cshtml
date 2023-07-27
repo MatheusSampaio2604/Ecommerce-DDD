@@ -10,10 +10,17 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input asp-for="Id" type="hidden" />
             <input asp-for="UserId" type="hidden" />
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Foto</p>
+                    <input type="file" name="Imagem" asp-for="Imagem" multiple />
+                </div>
+            </div>
 
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -40,7 +47,7 @@
                 <input asp-for="QtdEstoque" class="form-control" />
                 <span asp-validation-for="QtdEstoque" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
@@ -49,14 +56,14 @@
             <div class="form-group">
                 <label asp-for="DataCadastro" class="control-label"></label>
                 <input asp-for="DataCadastro" class="form-control" readonly />
-              
+
             </div>
             <div class="form-group">
                 <label asp-for="DataAlteracao" class="control-label"></label>
-                <input asp-for="DataAlteracao" class="form-control"  readonly />
-       
+                <input asp-for="DataAlteracao" class="form-control" readonly />
+
             </div>
-            
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
