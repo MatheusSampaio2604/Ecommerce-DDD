@@ -17,7 +17,7 @@ namespace Web_ECommerce.Controllers
 
         public readonly UserManager<ApplicationUser> _userManager;
         public readonly InterfaceCompraUsuarioApp _InterfaceCompraUsuarioApp;
-        private IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
 
 
         public CompraUsuarioController(UserManager<ApplicationUser> userManager, InterfaceCompraUsuarioApp InterfaceCompraUsuarioApp, IWebHostEnvironment environment)

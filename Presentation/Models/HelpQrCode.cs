@@ -15,7 +15,7 @@ namespace Web_ECommerce.Models
     public class HelpQrCode : Controller
     {
 
-        private async Task<byte[]> GenerateQrCodeAsync(string dadosBanco)
+        private static async Task<byte[]> GenerateQrCodeAsync(string dadosBanco)
         {
             
             QRCodeGenerator qrCodeGenerator = new QRCodeGenerator();
