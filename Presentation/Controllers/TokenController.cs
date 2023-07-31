@@ -36,10 +36,10 @@ namespace UI.Controllers
             {
                 var token = new TokenJWTBuilder()
                      .AddSecurityKey(JwtSecurityKey.Create("Secret_Key-12345678"))
-                 .AddSubject("Empresa E-Commerce")
-                 .AddIssuer("Teste.Securiry.Bearer")
-                 .AddAudience("Teste.Securiry.Bearer")
-                 .AddClaim("UsuarioAPINumero", "1")
+                 .AddSubject("Michael E-Commerce")
+                 .AddIssuer("Reacher.Securiry.Bearer")
+                 .AddAudience("Reacher.Securiry.Bearer")
+                 .AddClaim("ReacherNumero", "1")
                  .AddExpiry(5)
                  .Builder();
 
@@ -52,4 +52,3 @@ namespace UI.Controllers
         }
     }
 }
-//token --- //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXRoZXVzIFNhbXBhaW8iLCJqdGkiOiJjMjBiYjMxMy05YWNiLTRlNWYtYThmOS0zYzI2MWE3MzgwNTUiLCJVc3VhcmlvQVBJTnVtZXJvIjoiMSIsImV4cCI6MTY5MDU1NDQ4NiwiaXNzIjoiTXJSZWFjaGVyLlNlY3VyaXR5LkJlYXJlciIsImF1ZCI6Ik1yUmVhY2hlci5TZWN1cml0eS5CZWFyZXIifQ.rp8PuZs-KqpZ1N9YzG2FxkM2u1TO2bei7eS1VZi2dMQ

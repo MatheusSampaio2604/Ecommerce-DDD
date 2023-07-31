@@ -78,8 +78,8 @@ namespace Web_ECommerce
                       ValidateLifetime = true,
                       ValidateIssuerSigningKey = true,
 
-                      ValidIssuer = "Teste.Securiry.Bearer",
-                      ValidAudience = "Teste.Securiry.Bearer",
+                      ValidIssuer = "Reacher.Securiry.Bearer",
+                      ValidAudience = "Reacher.Securiry.Bearer",
                       IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
                   };
 
@@ -101,7 +101,7 @@ namespace Web_ECommerce
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("UsuarioAPI",
-                    policy => policy.RequireClaim("UsuarioAPINumero"));
+                    policy => policy.RequireClaim("ReacherNumero"));
             });
 
         }
