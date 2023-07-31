@@ -25,6 +25,7 @@ using Microsoft.IdentityModel.Tokens;
 using UI.Token;
 using System;
 using System.Threading.Tasks;
+using Domain.Interfaces.InterfaceUsuario;
 
 namespace Web_ECommerce
 {
@@ -54,6 +55,7 @@ namespace Web_ECommerce
             services.AddSingleton<ICompraUsuario, RepositoryCompraUsuario>();
             services.AddSingleton<ICompra, RepositoryCompra>();
             services.AddSingleton<ILogSistema, RepositoryLogSistema>();
+            services.AddSingleton<IUsuario, RepositoryUsuario>();
 
 
             // INTERFACE APLICAÇÃO
@@ -61,48 +63,50 @@ namespace Web_ECommerce
             services.AddSingleton<InterfaceCompraUsuarioApp, AppCompraUsuario>();
             services.AddSingleton<InterfaceCompraApp, AppCompra>();
             services.AddSingleton<InterfaceLogSistemaApp, AppLogSistema>();
+            services.AddSingleton<InterfaceUsuarioApp, AppUsuario>();
 
             // SERVIÇO DOMINIO
             services.AddSingleton<IServiceProduct, ServiceProduct>();
             services.AddSingleton<IServiceCompraUsuario, ServiceCompraUsuario>();
+            services.AddSingleton<IServiceUsuario, ServiceUsuario>();
 
 
             //JSONWEBTOKEN
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-              .AddJwtBearer(option =>
-              {
-                  option.TokenValidationParameters = new TokenValidationParameters
-                  {
-                      ValidateIssuer = true,
-                      ValidateAudience = true,
-                      ValidateLifetime = true,
-                      ValidateIssuerSigningKey = true,
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //  .AddJwtBearer(option =>
+            //  {
+            //      option.TokenValidationParameters = new TokenValidationParameters
+            //      {
+            //          ValidateIssuer = true,
+            //          ValidateAudience = true,
+            //          ValidateLifetime = true,
+            //          ValidateIssuerSigningKey = true,
 
-                      ValidIssuer = "Reacher.Securiry.Bearer",
-                      ValidAudience = "Reacher.Securiry.Bearer",
-                      IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
-                  };
+            //          ValidIssuer = "Reacher.Securiry.Bearer",
+            //          ValidAudience = "Reacher.Securiry.Bearer",
+            //          IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
+            //      };
 
-                  option.Events = new JwtBearerEvents
-                  {
-                      OnAuthenticationFailed = context =>
-                      {
-                          Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
-                          return Task.CompletedTask;
-                      },
-                      OnTokenValidated = context =>
-                      {
-                          Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
-                          return Task.CompletedTask;
-                      }
-                  };
-              });
+            //      option.Events = new JwtBearerEvents
+            //      {
+            //          OnAuthenticationFailed = context =>
+            //          {
+            //              Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+            //              return Task.CompletedTask;
+            //          },
+            //          OnTokenValidated = context =>
+            //          {
+            //              Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+            //              return Task.CompletedTask;
+            //          }
+            //      };
+            //  });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("UsuarioAPI",
-                    policy => policy.RequireClaim("ReacherNumero"));
-            });
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("UsuarioAPI",
+            //        policy => policy.RequireClaim("ReacherNumero"));
+            //});
 
         }
 
