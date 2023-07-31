@@ -17,6 +17,7 @@ namespace UI.Token
         private Dictionary<string, string> claims = new Dictionary<string, string>();
         private int expiryInMinutes = 5;
 
+
         public TokenJWTBuilder AddSecurityKey(SecurityKey securityKey)
         {
             this.securityKey = securityKey;
@@ -59,24 +60,20 @@ namespace UI.Token
             return this;
         }
 
+
         private void EnsureArguments()
         {
             if (this.securityKey == null)
-            {
                 throw new ArgumentNullException("Security Key");
-            }
+
             if (string.IsNullOrEmpty(this.subject))
-            {
                 throw new ArgumentNullException("Subject");
-            }
+
             if (string.IsNullOrEmpty(this.issuer))
-            {
                 throw new ArgumentNullException("Issuer");
-            }
+
             if (string.IsNullOrEmpty(this.audience))
-            {
                 throw new ArgumentNullException("Audience");
-            }
         }
 
         public TokenJWT Builder()
@@ -86,7 +83,7 @@ namespace UI.Token
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub,this.subject),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             }.Union(this.claims.Select(item => new Claim(item.Key, item.Value)));
 
             var token = new JwtSecurityToken(
@@ -95,13 +92,14 @@ namespace UI.Token
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
                 signingCredentials: new SigningCredentials(
-                                            this.securityKey,
-                                            SecurityAlgorithms.HmacSha256)
-            );
+                                                   this.securityKey,
+                                                   SecurityAlgorithms.HmacSha256)
+
+                );
 
             return new TokenJWT(token);
-        }
 
+        }
 
     }
 }

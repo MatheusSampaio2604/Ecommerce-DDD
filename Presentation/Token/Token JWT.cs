@@ -17,6 +17,6 @@ namespace UI.Token
 
         public DateTime ValidTo => token.ValidTo;
 
-        public string Value => new JwtSecurityTokenHandler().WriteToken(this.token);
+        public string value => new JwtSecurityTokenHandler().WriteToken(this.token);
     }
 }
