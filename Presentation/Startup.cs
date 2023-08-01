@@ -5,27 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure.Configuration;
-using Infrastructure.Repository.Repositories;
-using Infrastructure.Repository.Generics;
-using Domain.Interfaces.Generics;
-using Domain.Interfaces.InterfaceProduct;
-using ApplicationApp.Interfaces;
-using ApplicationApp.OpenApp;
-using Domain.Interfaces.InterfaceServices;
-using Domain.Services;
 using Entities.Entities;
-using Domain.Interfaces.InterfaceCompraUsuario;
-using Infra.Repository.Repositories;
-using Domain.Interfaces.InterfaceCompra;
-using Application.Interfaces;
-using Application.OpenApp;
-using Domain.Interfaces.InterfaceLogSistema;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using UI.Token;
-using System;
-using System.Threading.Tasks;
-using Domain.Interfaces.InterfaceUsuario;
+using HelpConfig;
 
 namespace Web_ECommerce
 {
@@ -49,65 +30,7 @@ namespace Web_ECommerce
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            // INTERFACE E REPOSITORIO
-            services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGenerics<>));
-            services.AddSingleton<IProduct, RepositoryProduct>();
-            services.AddSingleton<ICompraUsuario, RepositoryCompraUsuario>();
-            services.AddSingleton<ICompra, RepositoryCompra>();
-            services.AddSingleton<ILogSistema, RepositoryLogSistema>();
-            services.AddSingleton<IUsuario, RepositoryUsuario>();
-
-
-            // INTERFACE APLICAÇÃO
-            services.AddSingleton<InterfaceProductApp, AppProduct>();
-            services.AddSingleton<InterfaceCompraUsuarioApp, AppCompraUsuario>();
-            services.AddSingleton<InterfaceCompraApp, AppCompra>();
-            services.AddSingleton<InterfaceLogSistemaApp, AppLogSistema>();
-            services.AddSingleton<InterfaceUsuarioApp, AppUsuario>();
-
-            // SERVIÇO DOMINIO
-            services.AddSingleton<IServiceProduct, ServiceProduct>();
-            services.AddSingleton<IServiceCompraUsuario, ServiceCompraUsuario>();
-            services.AddSingleton<IServiceUsuario, ServiceUsuario>();
-
-
-            //JSONWEBTOKEN
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //  .AddJwtBearer(option =>
-            //  {
-            //      option.TokenValidationParameters = new TokenValidationParameters
-            //      {
-            //          ValidateIssuer = true,
-            //          ValidateAudience = true,
-            //          ValidateLifetime = true,
-            //          ValidateIssuerSigningKey = true,
-
-            //          ValidIssuer = "Reacher.Securiry.Bearer",
-            //          ValidAudience = "Reacher.Securiry.Bearer",
-            //          IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
-            //      };
-
-            //      option.Events = new JwtBearerEvents
-            //      {
-            //          OnAuthenticationFailed = context =>
-            //          {
-            //              Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
-            //              return Task.CompletedTask;
-            //          },
-            //          OnTokenValidated = context =>
-            //          {
-            //              Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
-            //              return Task.CompletedTask;
-            //          }
-            //      };
-            //  });
-
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("UsuarioAPI",
-            //        policy => policy.RequireClaim("ReacherNumero"));
-            //});
-
+            HelpStartup.ConfigureSingleton(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

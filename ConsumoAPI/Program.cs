@@ -19,16 +19,16 @@ namespace ConsumoAPI
             Console.WriteLine("Teste API Rodando");
             Thread.Sleep(10000);
 
-            //GetProduto();
+            GetProduto();
 
-            //foreach (var item in ListaDeprodutos)
-            //{
-            //    Console.WriteLine(" Codigo : " + item.Id);
-            //    Console.WriteLine(" Nome : " + item.Nome);
-            //}
+            foreach (var item in ListaDeprodutos)
+            {
+                Console.WriteLine(" Codigo : " + item.Id);
+                Console.WriteLine(" Nome : " + item.Nome);
+            }
 
 
-            ListarProdutos();
+            // ListarProdutos();
             foreach (var item in ListarProdutos())
             {
                 Console.WriteLine(" Codigo : " + item.Id);
@@ -39,54 +39,54 @@ namespace ConsumoAPI
             Console.ReadLine();
         }
         public static string Token { get; set; }
-        //public static List<Produto> ListaDeprodutos { get; set; }
-        //public static void GetToken()
-        //{
+        public static List<Produto> ListaDeprodutos { get; set; }
+        public static void GetToken()
+        {
 
-        //    string urlApiGeraToken = "https://localhost:5001/api/CreateToken";
+            string urlApiGeraToken = "https://localhost:5001/api/CreateToken";
 
-        //    using (var cliente = new HttpClient())
-        //    {
-        //        string login = "matheus.sampaio.ms1@csn.com.br";
-        //        string senha = "Matheus.1";
-        //        var dados = new
-        //        {
-        //            Email = login,
-        //            Password = senha
-        //        };
-        //        string JsonObjeto = JsonConvert.SerializeObject(dados);
-        //        var content = new StringContent(JsonObjeto, Encoding.UTF8, "application/json");
+            using (var cliente = new HttpClient())
+            {
+                string login = "matheus.sampaio.ms1@csn.com.br";
+                string senha = "Matheus.1";
+                var dados = new
+                {
+                    Email = login,
+                    Password = senha
+                };
+                string JsonObjeto = JsonConvert.SerializeObject(dados);
+                var content = new StringContent(JsonObjeto, Encoding.UTF8, "application/json");
 
-        //        var resultado = cliente.PostAsync(urlApiGeraToken, content).Result;
+                var resultado = cliente.PostAsync(urlApiGeraToken, content);
+                resultado.Wait();
+                if (resultado.Result.IsSuccessStatusCode)
+                {
+                    var tokenJson = resultado.Result.Content.ReadAsStringAsync();
+                    
+                    Token = JsonConvert.DeserializeObject(tokenJson.Result).ToString();
+                }
 
-        //        if (resultado.IsSuccessStatusCode)
-        //        {
-        //            var tokenJson = resultado.Content.ReadAsStringAsync();
-        //            tokenJson.Wait();
-        //            Token = JsonConvert.DeserializeObject(tokenJson.Result).ToString();
-        //        }
-
-        //    }
-        //}
-        //public static void GetProduto()
-        //{
-        //    GetToken(); // Gerar token
-        //    if (!string.IsNullOrWhiteSpace(Token))
-        //    {
-        //        using (var cliente = new HttpClient())
-        //        {
-        //            string urlApiGeraToken = "https://localhost:5001/api/ListaProdutos";
-        //            cliente.DefaultRequestHeaders.Clear();
-        //            cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
-        //            var response = cliente.GetStringAsync(urlApiGeraToken);
-        //            response.Wait();
-        //            var listaRetorno = JsonConvert.DeserializeObject<Produto[]>(response.Result).ToList();
-        //            ListaDeprodutos = listaRetorno;
-        //        }
-        //    }
+            }
+        }
+        public static void GetProduto()
+        {
+            GetToken(); // Gerar token
+            if (!string.IsNullOrWhiteSpace(Token))
+            {
+                using (var cliente = new HttpClient())
+                {
+                    string urlApiGeraToken = "https://localhost:5001/api/ListaProdutos";
+                    cliente.DefaultRequestHeaders.Clear();
+                    cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                    var response = cliente.GetStringAsync(urlApiGeraToken);
+                    response.Wait();
+                    var listaRetorno = JsonConvert.DeserializeObject<Produto[]>(response.Result).ToList();
+                    ListaDeprodutos = listaRetorno;
+                }
+            }
 
 
-        //}
+        }
 
 
         #region  ... 

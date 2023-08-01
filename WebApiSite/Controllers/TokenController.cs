@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UI.Token;
+using WebApiSite.Token;
 
-namespace UI.Controllers
+namespace WebApiSite.Controllers
 {
     public class TokenController : Controller
     {

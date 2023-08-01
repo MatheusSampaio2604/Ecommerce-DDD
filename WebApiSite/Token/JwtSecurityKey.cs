@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UI.Token
+namespace WebApiSite.Token
 {
     public class JwtSecurityKey
     {
