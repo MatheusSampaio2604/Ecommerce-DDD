@@ -43,7 +43,7 @@ namespace WebApiSite.Controllers
                  .AddExpiry(5)
                  .Builder();
 
-                return Ok(token.value);
+                return Ok(token.Value);
             }
             else
             {

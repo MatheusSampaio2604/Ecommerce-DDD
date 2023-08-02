@@ -33,7 +33,6 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
 
 }
 
-
 ObjetoVenda.CarregaProdutos = function (descricao) {
 
     $.ajax({
@@ -79,7 +78,6 @@ ObjetoVenda.CarregaProdutos = function (descricao) {
 
 }
 
-
 ObjetoVenda.CarregaQtdCarrinho = function () {
 
     $("#qtdCarrinho").text("(0)");
@@ -103,7 +101,40 @@ ObjetoVenda.CarregaQtdCarrinho = function () {
     setTimeout(ObjetoVenda.CarregaQtdCarrinho, 10000);
 }
 
+function CarregarMenu() {
+
+    $.ajax({
+        type: 'GET',
+        url: "/api/ListarMenu",
+        dataType: "JSON",
+        cache: false,
+        async: true,
+        
+
+        success: function (data) {
+
+            
+
+            data.listaMenu.forEach(function (Entitie) {
+
+                var html = $("<li>", { class: "nav-item" });
+
+                if (Entitie.urlImagem != undefined && Entitie.urlImagem != "") {
+                    html.append("<a class='nav-link text-dark' href=/" + Entitie.controller + "/" + Entitie.action + ">" + Entitie.descricao + " <img src=" + Entitie.urlImagem + " width='20' height='20' /> <span id=" + Entitie.idCampo + "></span> </a>")
+                }
+                else {
+                    html.append("<a class='nav-link text-dark' href=/" + Entitie.controller + "/" + Entitie.action + ">" + Entitie.descricao + "</a>")
+                }
+                $("#menuSite").append(html);
+            });
+        }
+    });
+}
+
 $(function () {
+
+    CarregarMenu();
+    
     ObjetoVenda.CarregaProdutos();
     ObjetoVenda.CarregaQtdCarrinho();
     $("#buscar").click(

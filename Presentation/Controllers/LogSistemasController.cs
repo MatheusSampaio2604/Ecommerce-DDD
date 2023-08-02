@@ -8,22 +8,27 @@ using Microsoft.EntityFrameworkCore;
 using Entities.Entities;
 using Infrastructure.Configuration;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Web_ECommerce.Controllers;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace UI.Controllers
 {
-    public class LogSistemasController : Controller
+    [Authorize]
+    [LogActionFilter]
+    public class LogSistemasController : BaseController
     {
-        private readonly InterfaceLogSistemaApp _interfaceLogSistemaApp;
-        
-
-        public LogSistemasController(InterfaceLogSistemaApp interfaceLogSistemaApp)
+        public LogSistemasController(UserManager<ApplicationUser> userManager, ILogger<ProdutosController> logger, InterfaceLogSistemaApp interfaceLogSistemaApp)
+            : base(logger, userManager, interfaceLogSistemaApp)
         {
-            _interfaceLogSistemaApp = interfaceLogSistemaApp;
         }
 
         // GET: LogSistemas
         public async Task<IActionResult> Index()
         {
+            if(!await UsuarioAdministrador())
+                return RedirectToAction("Index", "Home");
             
             return View(await _interfaceLogSistemaApp.List());
         }
@@ -31,6 +36,9 @@ namespace UI.Controllers
         // GET: LogSistemas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!await UsuarioAdministrador())
+                return RedirectToAction("Index", "Home");
+
             if (id == null)
             {
                 return NotFound();

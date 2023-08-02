@@ -5,15 +5,15 @@ namespace WebApiSite.Token
 {
     public class TokenJWT
     {
-        private JwtSecurityToken token;
+        private readonly JwtSecurityToken Token;
 
         internal TokenJWT(JwtSecurityToken token)
         {
-            this.token = token;
+            Token = token;
         }
 
-        public DateTime ValidTo => token.ValidTo;
+        public DateTime ValidTo => Token.ValidTo;
 
-        public string value => new JwtSecurityTokenHandler().WriteToken(this.token);
+        public string Value => new JwtSecurityTokenHandler().WriteToken(Token);
     }
 }
