@@ -77,7 +77,7 @@ namespace Web_ECommerce.Models
                 #region Informações 1
                 var relatorioCobranca = new PdfSharpCore.Drawing.Layout.XTextFormatter(graphics);
 
-                var titulo = new PdfSharpCore.Drawing.XFont("Arial", 14, PdfSharpCore.Drawing.XFontStyle.Bold);
+                var titulo = new XFont("Arial", 14, XFontStyle.Bold);
 
                 relatorioCobranca.Alignment = PdfSharpCore.Drawing.Layout.XParagraphAlignment.Center;
 
@@ -95,7 +95,7 @@ namespace Web_ECommerce.Models
                 var tituloInfo_1 = new PdfSharpCore.Drawing.XFont("Arial", 8, XFontStyle.Regular);
 
                 detalhes.DrawString("Dados do banco", tituloInfo_1, corFonte, new XRect(25, alturaTituloDetalhesY, page.Width, page.Height));
-                detalhes.DrawString("Banco Itau 004", tituloInfo_1, corFonte, new XRect(150, alturaTituloDetalhesY, page.Width, page.Height));
+                detalhes.DrawString("Banco Bradesco 237", tituloInfo_1, corFonte, new XRect(150, alturaTituloDetalhesY, page.Width, page.Height));
 
                 alturaTituloDetalhesY += 9;
                 detalhes.DrawString("Código Gerado", tituloInfo_1, corFonte, new XRect(25, alturaTituloDetalhesY, page.Width, page.Height));
@@ -115,7 +115,7 @@ namespace Web_ECommerce.Models
 
                 try
                 {
-                    var img = await GenerateQrCodeAsync("Dados do banco aqui");
+                    var img = await GenerateQrCodeAsync("Agencia e cc aqui");
 
                     Stream streamImage = new MemoryStream(img);
 

@@ -30,7 +30,6 @@ namespace HelpConfig
             services.AddSingleton<ILogSistema, RepositoryLogSistema>();
             services.AddSingleton<IUsuario, RepositoryUsuario>();
 
-
             // INTERFACE APLICAÇÃO
             services.AddSingleton<InterfaceProductApp, AppProduct>();
             services.AddSingleton<InterfaceCompraUsuarioApp, AppCompraUsuario>();
@@ -42,9 +41,6 @@ namespace HelpConfig
             services.AddSingleton<IServiceProduct, ServiceProduct>();
             services.AddSingleton<IServiceCompraUsuario, ServiceCompraUsuario>();
             services.AddSingleton<IServiceUsuario, ServiceUsuario>();
-
         }
-
-
     }
 }
