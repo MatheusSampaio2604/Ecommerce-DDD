@@ -26,7 +26,7 @@ namespace UI.Controllers
         [HttpGet("/api/ListarMenu")]
         public async Task<IActionResult> ListarMenu()
         {
-            var listaMenu = new List<MenuSite>();
+            List<MenuSite> listaMenu = new();
 
             var usuario = await RetornarIdUsuarioLogado();
 

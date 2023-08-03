@@ -22,7 +22,7 @@ namespace Domain.Services
 
         public async Task<List<MenuSite>> MontaMenuPorPerfil(string userId)
         {
-            var retorno = new List<MenuSite>();
+            List<MenuSite> retorno = new();
 
             retorno.Add(new MenuSite { Controller = "Home", Action = "Index", Descricao = "Loja Virtual" });
             if (!String.IsNullOrWhiteSpace(userId))
