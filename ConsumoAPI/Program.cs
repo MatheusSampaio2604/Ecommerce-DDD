@@ -2,12 +2,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading;
 
 namespace ConsumoAPI
@@ -62,7 +60,7 @@ namespace ConsumoAPI
                 if (resultado.Result.IsSuccessStatusCode)
                 {
                     var tokenJson = resultado.Result.Content.ReadAsStringAsync();
-                    
+
                     Token = JsonConvert.DeserializeObject(tokenJson.Result).ToString();
                 }
 

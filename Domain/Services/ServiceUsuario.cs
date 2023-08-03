@@ -1,10 +1,7 @@
 ﻿using Domain.Interfaces.InterfaceUsuario;
 using Entities.Entities;
 using Entities.Entities.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Services
@@ -22,7 +19,7 @@ namespace Domain.Services
         public async Task<List<ApplicationUser>> ListarUsuarioSomenteParaAdministradores(string userId)
         {
             var usuario = await _iUsuario.ObterUsuarioPeloId(userId);
-            if(usuario != null && usuario.Tipo == TipoUsuario.Administrador)
+            if (usuario != null && usuario.Tipo == TipoUsuario.Administrador)
             {
                 return await _iUsuario.List();
             }

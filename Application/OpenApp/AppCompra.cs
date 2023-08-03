@@ -1,10 +1,7 @@
 ﻿using Application.Interfaces;
 using Domain.Interfaces.InterfaceCompra;
 using Entities.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.OpenApp
@@ -12,7 +9,7 @@ namespace Application.OpenApp
     public class AppCompra : InterfaceCompraApp
     {
         private readonly ICompra _iCompra;
-        
+
         public AppCompra(ICompra iCompra)
         {
             _iCompra = iCompra;

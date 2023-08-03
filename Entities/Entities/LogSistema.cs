@@ -1,11 +1,6 @@
 ﻿using Entities.Entities.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.Entities
 {
@@ -19,7 +14,7 @@ namespace Entities.Entities
 
         [Column("LOG_TIPOLOG")]
         [Display(Name = "Tipo Log")]
-        public EnumTipoLog TipoLog {get;set;}
+        public EnumTipoLog TipoLog { get; set; }
 
         [Column("LOG_CONTROLLER")]
         [Display(Name = "Nome Controller")]

@@ -4,8 +4,6 @@ using Entities.Entities;
 using Entities.Entities.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Services
@@ -31,7 +29,7 @@ namespace Domain.Services
                 retorno.Add(new MenuSite { Controller = "CompraUsuario", Action = "MinhasCompras", Descricao = "Minhas Compras" });
 
                 var usuario = await _iUsuario.ObterUsuarioPeloId(userId);
-                if(usuario != null && usuario.Tipo != null)
+                if (usuario != null && usuario.Tipo != null)
                 {
                     switch ((TipoUsuario)usuario.Tipo)
                     {
@@ -48,7 +46,7 @@ namespace Domain.Services
                 }
 
                 retorno.Add(new MenuSite { Controller = "Produtos", Action = "ListarProdutosCarrinhoUsuario", Descricao = "", IdCampo = "qtdCarrinho", UrlImagem = "../img/carrinho.png" });
-            
+
             }
 
 

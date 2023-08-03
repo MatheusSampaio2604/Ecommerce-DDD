@@ -6,10 +6,8 @@ using Infrastructure.Repository.Generics;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repository.Repositories
 {
@@ -67,11 +65,11 @@ namespace Infrastructure.Repository.Repositories
         {
             var retorno = new List<CompraUsuario>();
 
-            using(var banco = new ContextBase(_optionsbuilder))
+            using (var banco = new ContextBase(_optionsbuilder))
             {
                 var comprasUsuario = await banco.Compra.Where(x => x.Estado == estado && x.UserId.Equals(userId)).ToListAsync();
 
-                foreach(var item in comprasUsuario)
+                foreach (var item in comprasUsuario)
                 {
                     var compraUsuario = new CompraUsuario();
                     compraUsuario.ListaProdutos = new List<Produto>();

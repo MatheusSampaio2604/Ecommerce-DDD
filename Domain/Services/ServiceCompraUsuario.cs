@@ -3,9 +3,7 @@ using Domain.Interfaces.InterfaceCompraUsuario;
 using Domain.Interfaces.InterfaceServices;
 using Entities.Entities;
 using Entities.Entities.Enums;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Services
@@ -23,7 +21,7 @@ namespace Domain.Services
         public async Task AdicionaProdutoCarrinho(string userId, CompraUsuario compraUsuario)
         {
             var compra = await _iCompra.CompraPorEstado(userId, EnumEstadoCompra.Produto_Carrinho);
-            if(compra == null)
+            if (compra == null)
             {
                 compra = new Compra
                 {

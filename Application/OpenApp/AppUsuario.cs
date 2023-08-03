@@ -5,8 +5,6 @@ using Entities.Entities;
 using Entities.Entities.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.OpenApp
@@ -64,6 +62,6 @@ namespace Application.OpenApp
             throw new NotImplementedException();
         }
 
-        
+
     }
 }

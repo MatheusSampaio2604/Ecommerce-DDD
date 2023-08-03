@@ -14,7 +14,6 @@ using Infra.Repository.Repositories;
 using Infrastructure.Repository.Generics;
 using Infrastructure.Repository.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace HelpConfig
 {
