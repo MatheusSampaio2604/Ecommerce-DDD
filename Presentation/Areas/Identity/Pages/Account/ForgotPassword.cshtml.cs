@@ -60,7 +60,7 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account
                 await _emailSender.SendEmailAsync(
                     Input.Email,
                     "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    $"Redefina sua senha por <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Aqui</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

@@ -46,7 +46,7 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "Novo e-mail")]
             public string NewEmail { get; set; }
         }
 
@@ -68,7 +68,7 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível carregar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -80,7 +80,7 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível carregar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -101,14 +101,14 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account.Manage
                     protocol: Request.Scheme);
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,
-                    "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "confirme seu email",
+                    $"Por favor, confirme sua conta por <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Aqui</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                StatusMessage = "Link de confirmação para alteração do e-mail enviado. Por favor verifique seu email.";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Seu e-mail não mudou.";
             return RedirectToPage();
         }
 
@@ -117,7 +117,7 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível carregar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -137,10 +137,10 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account.Manage
                 protocol: Request.Scheme);
             await _emailSender.SendEmailAsync(
                 email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                "confirme seu email",
+                $"Por favor, confirme sua conta por <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Aqui</a>.");
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = "E-mail de verificação enviado. Por favor verifique seu email.";
             return RedirectToPage();
         }
     }
