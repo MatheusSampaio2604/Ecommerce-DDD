@@ -36,9 +36,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumoAPI", "ConsumoAPI\Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Help", "7 - Help", "{DDD04FC9-A9DB-4E77-96FD-7C610D4E08A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpConfig", "HelpConfig\HelpConfig.csproj", "{62493C3B-6336-49F7-8877-A4528C88A656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpConfig", "HelpConfig\HelpConfig.csproj", "{62493C3B-6336-49F7-8877-A4528C88A656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSite", "WebApiSite\WebApiSite.csproj", "{AF2DA2FF-F65D-4D93-BB08-88E132344C7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiSite", "WebApiSite\WebApiSite.csproj", "{AF2DA2FF-F65D-4D93-BB08-88E132344C7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

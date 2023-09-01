@@ -21,7 +21,7 @@ namespace WebApiSite.Controllers
             _interfaceCompraUsuarioApp = interfaceCompraUsuarioApp;
         }
 
-        [HttpGet("/api/ListaProdutos")]
+        [HttpGet("/api/[controller]")]
         public async Task<JsonResult> ListaProdutos(string descricao)
         {
             return Json(await _interfaceProductApp.ListarProdutosComEstoque(descricao));

@@ -61,7 +61,7 @@ namespace Web_ECommerce.Models
                 int qtdPaginas = doc.PageCount;
 
                 var numeracaoPagina = new PdfSharpCore.Drawing.Layout.XTextFormatter(graphics);
-                numeracaoPagina.DrawString(Convert.ToString(qtdPaginas), new PdfSharpCore.Drawing.XFont("Arial", 10), corFonte, new PdfSharpCore.Drawing.XRect(575, 825, page.Width, page.Height));
+                numeracaoPagina.DrawString(Convert.ToString(qtdPaginas), new XFont("Arial", 10), corFonte, new PdfSharpCore.Drawing.XRect(575, 825, page.Width, page.Height));
                 #endregion
 
                 #region Logo 
@@ -81,7 +81,7 @@ namespace Web_ECommerce.Models
 
                 relatorioCobranca.Alignment = PdfSharpCore.Drawing.Layout.XParagraphAlignment.Center;
 
-                relatorioCobranca.DrawString("BOLETO ONLINE", titulo, corFonte, new XRect(0, 65, page.Width, page.Height));
+                relatorioCobranca.DrawString("PAGUE SEU BOLETO PARA FINALIZAR A COMPRA", titulo, corFonte, new XRect(0, 65, page.Width, page.Height));
 
                 #endregion
 
@@ -98,7 +98,7 @@ namespace Web_ECommerce.Models
                 detalhes.DrawString("Banco Bradesco 237", tituloInfo_1, corFonte, new XRect(150, alturaTituloDetalhesY, page.Width, page.Height));
 
                 alturaTituloDetalhesY += 9;
-                detalhes.DrawString("Código Gerado", tituloInfo_1, corFonte, new XRect(25, alturaTituloDetalhesY, page.Width, page.Height));
+                detalhes.DrawString("Código Gerado xxt", tituloInfo_1, corFonte, new XRect(25, alturaTituloDetalhesY, page.Width, page.Height));
                 detalhes.DrawString("000000 000000 000000 000000", tituloInfo_1, corFonte, new XRect(150, alturaTituloDetalhesY, page.Width, page.Height));
 
 
@@ -115,7 +115,7 @@ namespace Web_ECommerce.Models
 
                 try
                 {
-                    var img = await GenerateQrCodeAsync("Agencia e cc aqui");
+                    var img = await GenerateQrCodeAsync("Informa~ções aqui");
 
                     Stream streamImage = new MemoryStream(img);
 
