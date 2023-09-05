@@ -3,24 +3,50 @@
 @inject UserManager<Entities.Entities.ApplicationUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bem Vindo @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Sair da conta</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Crie a sua conta</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
-    </li>
-}
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="rounded-circle nav-link text-dark " asp-area="Identity" asp-page="/Account/Manage/Index" title="@User.Identity.Name">
+                <svg width="30px" height="30px" viewBox="-3.36 -3.36 30.72 30.72" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
+                        <path transform="translate(-3.36, -3.36), scale(0.96)" d="M16,30.460478577762842C18.32055286710411,30.430275767199657,20.60898788146263,29.765997713152554,22.593402177500298,28.562678254125842C24.521700635763512,27.393386608589694,26.13332316668714,25.709659914226666,27.15230928151355,23.69788328789563C28.1158766786637,21.79551941926574,27.665058149038252,19.544821921304028,28.20585295627665,17.482058872870404C28.843448025838,15.05006889857532,31.865819452916426,12.640042416225942,30.624554451681632,10.45363808387789C29.284150630740005,8.09260742701793,25.432388918135324,9.225882890820765,22.926071641387836,8.18208124582084C21.328137822811964,7.51659249708787,20.228970542945483,6.035205516169249,18.601250162549196,5.446313228495848C16.867400636321822,4.819024520755459,15.041125434551432,4.84777233130214,13.206315022064793,4.665574491885446C10.60567129405563,4.407328917786221,7.233693586192288,2.1917480683514245,5.4974750953723355,4.145100040912979C3.6431686945672404,6.231308133326253,7.1528252159376455,9.669191757708457,6.37599889068837,12.350097815987464C5.6941996163102875,14.703055930047121,1.4664300562695252,15.305870787430848,1.5541107207446423,17.754048525696366C1.6383220945701908,20.105358383378505,5.377722227789877,20.473319606992895,6.73574137331539,22.394656017593846C8.072242854317022,24.285549063344565,7.569510881856264,27.21501607706837,9.315899423298774,28.735489615643207C11.076935262895875,30.26871565958966,13.66523964478385,30.490866303773593,16,30.460478577762842" fill="#0055ff" strokewidth="0"></path>
+                    </g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#db0000" stroke-width="1.6320000000000001">
+                        <circle cx="12" cy="9" r="3" stroke="#000000" stroke-width="1.5"></circle>
+                        <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
+                        </path>
+                        <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
+
+                        </path>
+                    </g>
+                    <g id="SVGRepo_iconCarrier">
+                        <circle cx="12" cy="9" r="3" stroke="#000000" stroke-width="1.5"></circle>
+                        <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                    </g>
+                </svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark rounded-circle alert-danger" title="Logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                    </svg>
+                </button>
+            </form>
+        </li>
+
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Crie a sua conta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
+        </li>
+    }
 </ul>

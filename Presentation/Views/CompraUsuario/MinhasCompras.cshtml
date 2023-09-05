@@ -51,11 +51,11 @@
             <table class="table">
                 <thead>
                     <tr>
-
+                        <th>Imagem</th>
                         <th>
                             Nome
                         </th>
-                        <th>Imagem</th>
+
                         <th>
                             Descrição
                         </th>
@@ -75,11 +75,6 @@
                     @foreach (var produto in item.ListaProdutos)
                     {
                         <tr>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => produto.Nome)
-                            </td>
-
                             <td>
                                 @{
                                     if (!string.IsNullOrWhiteSpace(produto.Url))
@@ -88,6 +83,11 @@
                                     }
                                 }
                             </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => produto.Nome)
+                            </td>
+
+
 
                             <td>
                                 @Html.DisplayFor(modelItem => produto.Descricao)
@@ -116,8 +116,6 @@
             <h3>Não existe compras</h3>
         }
     }
-
-
 </div>
 
 

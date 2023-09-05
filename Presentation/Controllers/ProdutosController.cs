@@ -98,7 +98,8 @@ namespace Web_ECommerce.Controllers
         // GET: ProdutosController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            return View(await _InterfaceProductApp.GetEntityById(id));
+            var i = await _InterfaceProductApp.GetEntityById(id);
+            return View(i);
         }
 
         // POST: ProdutosController/Edit/5
@@ -108,8 +109,19 @@ namespace Web_ECommerce.Controllers
         {
             try
             {
-                await _InterfaceProductApp.UpdateProduct(produto);
-                await SalvarImagemProduto(produto);
+                if (produto.Imagem != null)
+                {
+                    await SalvarImagemProduto(produto);
+                }
+                else
+                {
+                    var oldProduto = await _InterfaceProductApp.GetEntityById(produto.Id);
+
+                    produto.Url = oldProduto.Url;
+
+                    await _InterfaceProductApp.UpdateProduct(produto);
+                }
+
                 if (produto.Notitycoes.Any())
                 {
                     foreach (var item in produto.Notitycoes)
@@ -120,7 +132,7 @@ namespace Web_ECommerce.Controllers
                     ViewBag.Alerta = true;
                     ViewBag.Mensagem = "Verifique, ocorreu algum erro!";
 
-                    //await LogEcommerce(EnumTipoLog.Erro, produto);
+                    await LogEcommerce(EnumTipoLog.Erro, produto);
 
                     return View("Edit", produto);
                 }
@@ -213,30 +225,26 @@ namespace Web_ECommerce.Controllers
         {
             try
             {
-                var produto = await _InterfaceProductApp.GetEntityById(produtoTela.Id);
+                var oldProduto = await _InterfaceProductApp.GetEntityById(produtoTela.Id);
 
-                if (produtoTela.Imagem != null)
+                var webRoot = _environment.WebRootPath;
+                var extension = Path.GetExtension(produtoTela.Imagem.FileName);
+                var nomeArquivo = string.Concat(produtoTela.Id.ToString(), extension);
+                var diretorioArquivoSalvar = Path.Combine(webRoot, "imgProdutos", nomeArquivo);
+
+                using (var stream = new FileStream(diretorioArquivoSalvar, FileMode.Create))
                 {
-                    var webRoot = _environment.WebRootPath;
-
-                    var extension = System.IO.Path.GetExtension(produtoTela.Imagem.FileName);
-                    var nomeArquivo = string.Concat(produto.Id.ToString(), extension);
-                    var diretorioArquivoSalvar = System.IO.Path.Combine(webRoot, "imgProdutos", nomeArquivo);
-
-                    using (var stream = new FileStream(diretorioArquivoSalvar, FileMode.Create))
-                    {
-                        await produtoTela.Imagem.CopyToAsync(stream);
-                    }
-
-                    produto.Url = $"https://localhost:5001/imgProdutos/{nomeArquivo}";
-
-                    await _InterfaceProductApp.UpdateProduct(produto);
+                    await produtoTela.Imagem.CopyToAsync(stream);
                 }
+
+                produtoTela.Url = $"https://localhost:5001/imgProdutos/{nomeArquivo}";
+
+                await _InterfaceProductApp.UpdateProduct(produtoTela);
+
             }
             catch (Exception erro)
             {
                 await LogEcommerce(EnumTipoLog.Erro, erro);
-                // Lide com a exceção de alguma forma apropriada
             }
 
 

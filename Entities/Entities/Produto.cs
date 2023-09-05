@@ -45,7 +45,7 @@ namespace Entities.Entities
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Column("PRD_ESTADO")]
-        [Display(Name = "Estado")]
+        [Display(Name = "Pronto para Venda")]
         public bool Estado { get; set; }
 
         [Column("PRD_DATA_CADASTRO")]

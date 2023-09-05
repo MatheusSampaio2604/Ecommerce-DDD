@@ -49,7 +49,7 @@ ObjetoVenda.CarregaProdutos = function (descricao) {
 
             data.forEach(function (Entitie) {
 
-                htmlConteudo += " <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>";
+                htmlConteudo += " <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4 '>";
 
                 var idNome = "nome_" + Entitie.id;
                 var idQtd = "qtd_" + Entitie.id;
@@ -117,10 +117,10 @@ function CarregarMenu() {
 
             data.listaMenu.forEach(function (Entitie) {
 
-                var html = $("<li>", { class: "nav-item" });
+                var html = $("<li>", { class: "nav-item text-center align-items-center d-flex" });
 
                 if (Entitie.urlImagem != undefined && Entitie.urlImagem != "") {
-                    html.append("<a class='nav-link text-dark' href=/" + Entitie.controller + "/" + Entitie.action + ">" + Entitie.descricao + " <img src=" + Entitie.urlImagem + " width='20' height='20' /> <span id=" + Entitie.idCampo + "></span> </a>")
+                    html.append("<a class='nav-link text-dark' href=/" + Entitie.controller + "/" + Entitie.action + ">" + Entitie.descricao + " <img src=" + Entitie.urlImagem + " width='25' height='25' title='Carrinho' /> <span id=" + Entitie.idCampo + "></span> </a>")
                 }
                 else {
                     html.append("<a class='nav-link text-dark' href=/" + Entitie.controller + "/" + Entitie.action + ">" + Entitie.descricao + "</a>")
